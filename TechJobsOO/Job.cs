@@ -41,5 +41,27 @@ namespace TechJobsOO
             return HashCode.Combine(Id);
         }
 
+        private Object CheckDataAvailability(Object var)
+        {
+            if (var == null)
+            {
+                return "Data not available";
+            }
+            return var;
+        }
+
+        public override string ToString()
+        {
+            string jobString = "\n";
+            jobString += "ID: " + CheckDataAvailability(Id) + "\n";
+            jobString += "Name: " + CheckDataAvailability(Name) + "\n";
+            jobString += "Employer: " + CheckDataAvailability(EmployerName) + "\n";
+            jobString += "Location: " + CheckDataAvailability(EmployerLocation) + "\n";
+            jobString += "Position Type: " + CheckDataAvailability(JobType) + "\n";
+            jobString += "Core Competency: " + CheckDataAvailability(JobCoreCompetency) + "\n";
+            jobString += "\n";
+            return jobString;
+        }
+
     }
 }

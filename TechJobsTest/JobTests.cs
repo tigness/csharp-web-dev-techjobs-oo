@@ -44,5 +44,54 @@ namespace TechJobsTest
 
             Assert.IsFalse(testJobA.Equals(testJobB));
         }
+
+        [TestMethod]
+        public void TestJobToString1()
+        {
+            Employer testEmployer = new Employer("ACME");
+            Location testLocation = new Location("Desert");
+            PositionType testJobType = new PositionType("Quality control");
+            CoreCompetency testCoreCompetency = new CoreCompetency("Persistence");
+
+            Job testJob = new Job("Product tester", testEmployer, testLocation, testJobType, testCoreCompetency);
+            string testString = testJob.ToString();
+
+            Assert.IsTrue(testString.StartsWith("\n"));
+            Assert.IsTrue(testString.EndsWith("\n"));
+        }
+
+        [TestMethod]
+        public void TestJobToString2()
+        {
+            Employer testEmployer = new Employer("ACME");
+            Location testLocation = new Location("Desert");
+            PositionType testJobType = new PositionType("Quality control");
+            CoreCompetency testCoreCompetency = new CoreCompetency("Persistence");
+
+            Job testJob = new Job("Product tester", testEmployer, testLocation, testJobType, testCoreCompetency);
+            string testString = testJob.ToString();
+
+            Assert.IsTrue(testString.Contains("ID: "+testJob.Id+"\n"));
+            Assert.IsTrue(testString.Contains("Name: Product tester\n"));
+            Assert.IsTrue(testString.Contains("Employer: ACME\n"));
+            Assert.IsTrue(testString.Contains("Location: Desert\n"));
+            Assert.IsTrue(testString.Contains("Position Type: Quality control\n"));
+            Assert.IsTrue(testString.Contains("Core Competency: Persistence\n"));
+        }
+
+        [TestMethod]
+        public void TestJobToString3()
+        {
+            Job testJob = new Job();
+            string testString = testJob.ToString();
+
+            Assert.IsTrue(testString.Contains("Name: Data not available\n"));
+            Assert.IsTrue(testString.Contains("Employer: Data not available\n"));
+            Assert.IsTrue(testString.Contains("Location: Data not available\n"));
+            Assert.IsTrue(testString.Contains("Position Type: Data not available\n"));
+            Assert.IsTrue(testString.Contains("Core Competency: Data not available\n"));
+        }
+
+      
     }
 }
